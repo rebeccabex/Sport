@@ -1,0 +1,32 @@
+@(message: String)
+
+
+@main("Cricket Menu") {
+
+<div id="teams" class="container">
+    <div class="row">
+        <form onclick="/cricket_start" method="post">
+            @for(j <- 1 to 2) {
+                <div class="col-md-6 col-lg-6" style="align:center">
+                    <div class="form-group">
+                        <h5>Team @j</h5>
+                        <input type="text" id=@{s"team${j}"} name=@{s"team${j}"} class="form-group" placeholder=@{s"Team${j}"}>
+                        <select class="form-control" id="team1Rating" name="team1Rating" style="width:70px">
+                            @for(i <- 1 to 8) {
+                                <option>@i</option>
+                            }
+                        </select>
+                        @for(i <- 1 to 11) {
+                            <div class="row">
+                                <input type="text" id=@{s"team${j}Player$i"} name=@{s"team${j}Player$i"}
+                                       class="form-group" placeholder=@{s"Player$i"}>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+}

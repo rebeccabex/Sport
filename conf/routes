@@ -7,7 +7,7 @@ GET         /                               controllers.Application.index
 GET         /index                          controllers.Application.indexRedirect
 GET         /football                       controllers.Football.start
 GET         /tennis                         controllers.Tennis.start
-GET         /cricket                       controllers.Cricket.start
+GET         /cricket                        controllers.Cricket.start
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                   controllers.Assets.at(path="/public", file)
