@@ -1,0 +1,19 @@
+@(matchState: cricket.CricketMatch)
+
+
+@main("Cricket Menu") {
+
+<div id="scoreboard" class="container">
+    <div class="row">
+        @for(team <- matchState.teams) {
+            <div class="col-md-6 col-lg-6">
+                <h4>@team.name</h4>
+                @for(inns <- team.innings) {
+                    <h5>@{s"${inns.runs}-${inns.wickets}"}</h5>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+}
