@@ -7,9 +7,9 @@
     <div class="row">
         <form action="/cricket_scoreboard" method="post">
             @for(j <- 1 to 2) {
-                <div class="col-md-6 col-lg-6" style="align:center">
+                <div class="col-md-4 col-lg-4" style="align:center">
                     <div class="form-group">
-                        <h5>Team @j</h5>
+                        <h4>Team @j</h4>
                         <input type="text" id=@{s"team${j}"} name=@{s"team${j}"} class="form-group" placeholder=@{s"Team${j}"}>
                         <select class="form-control" id=@{s"team${j}Rating"} name=@{s"team${j}Rating"} style="width:70px">
                             @for(i <- 1 to 8) {
@@ -25,9 +25,36 @@
                     </div>
                 </div>
             }
-            <button type="submit" class="btn btn-default">
-                OK
-            </button>
+            <div class="col-md-4 col-lg-4">
+                <h4>Options</h4>
+                <label for="matchFormat">Format:</label>
+                <select class="form-control" id="matchFormat" name="matchFormat" style="width:140px">
+                    @for(i <- List("Test", "Limited Overs")) {
+                        <option>@i</option>
+                    }
+                </select>
+                <label for="oversPerInnings">Overs per Innings:</label>
+                <select class="form-control" id="oversPerInnings" name="oversPerInnings" style="width:140px">
+                    @for(i <- List(4, 10, 12)) {
+                        <option>@i</option>
+                    }
+                </select>
+                <label for="noOfDays">Number of Days:</label>
+                <select class="form-control" id="noOfDays" name="noOfDays" style="width:140px">
+                    @for(i <- 1 to 5) {
+                        @if(i == 5) {
+                            <option selected="selected">@i</option>
+                        } else {
+                            <option>@i</option>
+                        }
+                    }
+                </select>
+                <label for="oversPerDay">Overs per Day:</label>
+                <input class="form-control" id="oversPerDay" name="oversPerDay" style="width:140px" value="10"/>
+                <button type="submit" class="btn btn-default">
+                    OK
+                </button>
+            </div>
         </form>
     </div>
 </div>

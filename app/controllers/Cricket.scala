@@ -30,6 +30,14 @@ class Cricket extends Controller {
       val team = CricketTeam(teamName, teamRating, players, Array(blankInnings))
       currentMatch.teams(i-1) = team
     }
+
+    if (matchFormData.get("matchFormat") == "Test") {
+      currentMatch.noOfInnings = 2
+      currentMatch.noOfDays = matchFormData.get("noOfDays").head.toInt
+    }
+
+
+
     Ok(views.html.cricketScoreboard(currentMatch))
   }
 
