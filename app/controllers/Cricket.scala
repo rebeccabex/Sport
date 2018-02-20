@@ -27,7 +27,7 @@ class Cricket extends Controller {
       }
       val teamName = matchFormData.get(s"team${i}").head
       val teamRating = matchFormData.get(s"team${i}Rating").head.toInt
-      val team = CricketTeam(teamName, teamRating, players, Array(blankInnings))
+      val team = CricketTeam(teamName, teamRating, players, Array(blankInnings), 0, 1, 11, 10)
       currentMatch.teams(i-1) = team
     }
 
