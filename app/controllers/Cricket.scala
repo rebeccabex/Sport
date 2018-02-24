@@ -27,13 +27,21 @@ class Cricket extends Controller {
       }
       val teamName = matchFormData.get(s"team${i}").head
       val teamRating = matchFormData.get(s"team${i}Rating").head.toInt
-      val team = CricketTeam(teamName, teamRating, players, Array(blankInnings), 0, 1, 11, 10)
+      val wicketkeeper = matchFormData.get(s"team${i}Wicketkeeper").head.toInt
+      val currBowler = matchFormData.get(s"team${i}Bowler1").head.toInt
+      val changeBowler = matchFormData.get(s"team${i}Bowler2").head.toInt
+
+      val team = CricketTeam(teamName, teamRating, players, Array(blankInnings), 0, 1, currBowler, changeBowler, wicketkeeper)
       currentMatch.teams(i-1) = team
     }
 
     if (matchFormData.get("matchFormat") == "Test") {
       currentMatch.noOfInnings = 2
       currentMatch.noOfDays = matchFormData.get("noOfDays").head.toInt
+      currentMatch.oversPerDay = matchFormData.get("oversPerDay").head.toInt
+    } else {
+      currentMatch.noOfInnings = 1
+      currentMatch.oversPerInnings = matchFormData.get("oversPerInnings").head.toInt
     }
 
 
