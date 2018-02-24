@@ -4,28 +4,67 @@
 @main("Cricket Menu") {
 
 <div id="teams" class="container">
-    <div class="row">
-        <form action="/cricket_scoreboard" method="post">
-            @for(j <- 1 to 2) {
-                <div class="col-md-4 col-lg-4" style="align:center">
+    <form action="/cricket_scoreboard" method="post">
+        <div class="row">
+            <div class="col-md-10 col-lg-10">
+                @for(j <- 1 to 2) {
                     <div class="form-group">
-                        <h4>Team @j</h4>
-                        <input type="text" id=@{s"team${j}"} name=@{s"team${j}"} class="form-group" placeholder=@{s"Team${j}"}>
-                        <select class="form-control" id=@{s"team${j}Rating"} name=@{s"team${j}Rating"} style="width:70px">
-                            @for(i <- 1 to 8) {
-                                <option>@i</option>
-                            }
-                        </select>
-                        @for(i <- 1 to 11) {
+                        <div class="col-md-4 col-lg-4">
                             <div class="row">
-                                <input type="text" id=@{s"team${j}Player$i"} name=@{s"team${j}Player$i"}
-                                       class="form-group" placeholder=@{s"Player$i"}>
+                                <h4>Team @j</h4>
+                                <input type="text" id=@{s"team${j}"} name=@{s"team${j}"} class="form-group" placeholder=@{s"Team${j}"}>
                             </div>
-                        }
+                            <div class="row">
+                                <label for=@{s"team${j}Rating"}>Rating:</label>
+                                <select class="form-control" id=@{s"team${j}Rating"} name=@{s"team${j}Rating"} style="width:70px">
+                                    @for(i <- 1 to 8) {
+                                        <option>@i</option>
+                                    }
+                                </select>
+                                @for(i <- 1 to 11) {
+                                    <div class="row">
+                                        <input type="text" id=@{s"team${j}Player$i"} name=@{s"team${j}Player$i"}
+                                               class="form-group" placeholder=@{s"Player$i"}>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-lg-2">
+                            <label for=@{s"team${j}Wicketkeeper"}>Wicketkeeper:</label>
+                            <select class="form-control" id=@{s"team${j}Wicketkeeper"} name=@{s"team${j}Wicketkeeper"} style="width:70px">
+                                @for(i <- 1 to 11) {
+                                    @if(i == 7) {
+                                        <option selected="selected">@i</option>
+                                    } else {
+                                        <option>@i</option>
+                                    }
+                                }
+                            </select>
+                            <label for=@{s"team${j}Bowler1"}>Opening Bowler:</label>
+                            <select class="form-control" id=@{s"team${j}Bowler1"} name=@{s"team${j}Bowler1"} style="width:70px">
+                                @for(i <- 1 to 11) {
+                                    @if(i == 11) {
+                                        <option selected="selected">@i</option>
+                                    } else {
+                                        <option>@i</option>
+                                    }
+                                }
+                            </select>
+                            <label for=@{s"team${j}Bowler2"}>Second Bowler:</label>
+                            <select class="form-control" id=@{s"team${j}Bowler2"} name=@{s"team${j}Bowler2"} style="width:70px">
+                                @for(i <- 1 to 11) {
+                                    @if(i == 10) {
+                                        <option selected="selected">@i</option>
+                                    } else {
+                                        <option>@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
                     </div>
-                </div>
-            }
-            <div class="col-md-4 col-lg-4">
+                }
+            </div>
+            <div class="col-md-2 col-lg-2">
                 <h4>Options</h4>
                 <label for="matchFormat">Format:</label>
                 <select class="form-control" id="matchFormat" name="matchFormat" style="width:140px">
@@ -51,12 +90,13 @@
                 </select>
                 <label for="oversPerDay">Overs per Day:</label>
                 <input class="form-control" id="oversPerDay" name="oversPerDay" style="width:140px" value="10"/>
-                <button type="submit" class="btn btn-default">
+                <hr/>
+                <button type="submit" class="btn btn-default" style="width:200px text-align:center">
                     OK
                 </button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 }
