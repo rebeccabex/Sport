@@ -15,7 +15,21 @@
         }
     </div>
     <div class="row">
-        @matchState.teams(matchState.battingTeam).name
+        <div class="col-md-4 col-lg-4">
+            @matchState.teams(matchState.battingTeam).name
+            @{s"${matchState.teams(matchState.battingTeam).innings(matchState.whichInnings).runs}-${matchState.teams(matchState.battingTeam).innings(matchState.whichInnings).wickets}"}
+            @{s"(${matchState.teams(matchState.battingTeam).innings(matchState.whichInnings).overs}-${matchState.teams(matchState.battingTeam).innings(matchState.whichInnings).balls})"}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <div class="row">
+                @matchState.teams(matchState.battingTeam).players(matchState.teams(matchState.battingTeam).innings(0).onStrike).name
+            </div>
+            <div class="row">
+                @matchState.teams(matchState.battingTeam).players(matchState.teams(matchState.battingTeam).innings(0).waiting).name
+            </div>
+        </div>
     </div>
 </div>
 
