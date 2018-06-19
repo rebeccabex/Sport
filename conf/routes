@@ -10,6 +10,7 @@ GET         /tennis                         controllers.Tennis.start
 GET         /cricket                        controllers.Cricket.setup
 GET         /randomisers                    controllers.Randomisers.setup
 POST        /cricket_scoreboard             controllers.Cricket.startMatch
+POST        /roll_dice                      controllers.Randomisers.roll
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                   controllers.Assets.at(path="/public", file)

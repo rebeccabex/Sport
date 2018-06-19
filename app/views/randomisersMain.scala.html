@@ -1,9 +1,30 @@
-@(name: String)
+@(rolls: List[Int])
 
 
 @main("Dice and Cards") {
 
     <div id="randomisers" class="container">
-        @name
+        @for(i <- rolls) {
+            @i
+        }
     </div>
+
+    <form action="/roll_dice" method="post">
+        <label for="diceSides">No of Sides:</label>
+        <select class="form-control" id="matchFormat" name="diceSides" style="width:140px">
+            @for(i <- List(4, 6, 8, 10, 12, 20)) {
+                @if(i == 6) {
+                     <option selected="selected">@i</option>
+                } else {
+                     <option>@i</option>
+                }
+            }
+        </select>
+
+        <input class="form-control" id="noOfDice" name="noOfDice" style="width:140px" value="2"/>
+
+        <button type="submit" class="btn btn-default" style="width:200px text-align:center">
+            Roll
+        </button>
+    </form>
 }
