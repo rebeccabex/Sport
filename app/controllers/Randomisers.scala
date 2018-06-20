@@ -7,7 +7,7 @@ import scala.collection.mutable.ArrayBuffer
 class Randomisers extends Controller {
 
   def setup = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.randomisersMain(List()))
+    Ok(views.html.randomisersMain(List(), 6, 2))
   }
 
   def roll = Action { implicit request: Request[AnyContent] =>
@@ -21,7 +21,7 @@ class Randomisers extends Controller {
       rolls += rollDie(diceSides)
     }
 
-    Ok(views.html.randomisersMain(rolls.toList))
+    Ok(views.html.randomisersMain(rolls.toList, diceSides, noOfDice))
   }
 
   def rollDie(noOfSides: Int) = {
